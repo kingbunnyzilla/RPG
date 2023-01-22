@@ -1,4 +1,9 @@
 import Phaser from "phaser";
+import "./assets/bomb.png";
+import "./assets/dude.png";
+import "./assets/platform.png";
+import "./assets/sky.png";
+import "./assets/star.png";
 
 const config = {
     type: Phaser.AUTO,

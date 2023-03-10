@@ -1,9 +1,9 @@
 import Phaser from "phaser";
 import "./assets/Walk_Down.png";
-import "./assets/dude.png";
+
 
 let player: Phaser.Physics.Arcade.Sprite;
-let player2: Phaser.Physics.Arcade.Sprite;
+
 
 new Phaser.Game({
     type: Phaser.AUTO,
@@ -22,10 +22,7 @@ new Phaser.Game({
                 'assets/Walk_Down.png',
                 { frameWidth: 32, frameHeight: 32 }
             );
-            this.load.spritesheet('dude',
-                'assets/dude.png',
-                { frameWidth: 32, frameHeight: 48 }
-            );
+
         },
 
         create() {
@@ -36,20 +33,41 @@ new Phaser.Game({
                 frameRate: 10,
                 repeat: -1
             });
-            player2 = this.physics.add.sprite(200, 450, 'dude');
             this.anims.create({
-                key: 'left',
-                frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 8 }),
+                key: "stand",
+                frames: this.anims.generateFrameNumbers('Walk_Down', { start: 3, end: 3 }),
                 frameRate: 10,
                 repeat: -1
             });
 
         },
 
-        update() {
-            player.anims.play("walkdown", true);
-            player2.anims.play("left", true);
+        update(time, delta) {
 
+            let cursors = this.input.keyboard.createCursorKeys();
+            if (cursors.left.isDown) {
+                player.x -= 0.025 * delta;
+
+                player.anims.play('walkdown', true);
+            }
+            else if (cursors.right.isDown) {
+                player.x += 0.025 * delta;
+
+                player.anims.play('walkdown', true);
+            }
+            if (cursors.up.isDown) {
+                player.y -= 0.025 * delta;
+
+                player.anims.play('walkdown', true);
+            }
+            else if (cursors.down.isDown) {
+                player.y += 0.025 * delta;
+
+                player.anims.play('walkdown', true);
+            }
+            else {
+                player.anims.play('stand', true);
+            }
         }
     }
 })

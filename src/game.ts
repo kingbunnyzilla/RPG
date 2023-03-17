@@ -1,28 +1,33 @@
 import Phaser from "phaser";
 import "./assets/player.jpg";
+import "./assets/magecity.png";
 
-let player:Phaser.Physics.Arcade.Sprite;
+let player: Phaser.Physics.Arcade.Sprite;
 new Phaser.Game({
     type: Phaser.AUTO,
     width: 800,
     height: 600,
     scene: {
-        preload(){
+        preload() {
             this.load.spritesheet('player',
                 'assets/player.jpg',
                 { frameWidth: 36, frameHeight: 36 }
             );
+            this.load.spritesheet('magecity',
+                'assets/magecity.png',
+                { frameWidth: 32, frameHeight: 32 }
+            );
         },
-        create(){
+        create() {
             player = this.physics.add.sprite(100, 450, 'player');
             this.anims.create({
                 key: "walk down",
-                frames: this.anims.generateFrameNumbers('player',{start:0, end: 6}),
+                frames: this.anims.generateFrameNumbers('player', { start: 0, end: 6 }),
                 frameRate: 10,
                 repeat: -1
             });
         },
-        update(){
+        update() {
             player.anims.play("walk down", true);
 
         }

@@ -45,8 +45,7 @@ new Phaser.Game({
 
         },
 
-        update(time, delta) {
-
+        update(time?: number, delta?: number) {
             let cursors = this.input.keyboard.createCursorKeys();
             if (cursors.left.isDown) {
                 player.x -= 0.025 * delta;
@@ -72,5 +71,5 @@ new Phaser.Game({
                 player.anims.play('stand', true);
             }
         }
-    }
+    } satisfies Phaser.Types.Scenes.CreateSceneFromObjectConfig
 })

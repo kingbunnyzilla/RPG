@@ -5,4 +5,4 @@ watch:
 	npm run watch
 
 website:
-	npx http-server -o
+	npm run website
